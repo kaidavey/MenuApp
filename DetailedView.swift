@@ -2,14 +2,13 @@
 //  SpecificItem.swift
 //  Menu App
 //
-//  Created by Hong Huang on 6/26/24.
-//
 
 import SwiftUI
 
 struct DetailedView: View {
     
     var item:MenuItem
+    var secondaryDataService = SecondaryDataService()
     
     var body: some View {
         
@@ -41,7 +40,14 @@ struct DetailedView: View {
                     .cornerRadius(10.0)
                     .padding()
                 
-                
+                Button("Add to Cart") {
+                    //secondaryDataService.addData(item:item)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.extraLarge)
+                .foregroundColor(.black)
+                .font(.title3)
+                .fontWeight(.semibold)
                 
                 Spacer()
             }

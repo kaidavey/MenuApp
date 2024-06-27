@@ -2,8 +2,6 @@
 //  MenuItem.swift
 //  Menu App
 //
-//  Created by Hong Huang on 6/26/24.
-//
 
 import Foundation
 

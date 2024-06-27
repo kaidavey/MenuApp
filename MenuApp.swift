@@ -2,8 +2,6 @@
 //  Menu_AppApp.swift
 //  Menu App
 //
-//  Created by Hong Huang on 6/26/24.
-//
 
 import SwiftUI
 
@@ -11,7 +9,7 @@ import SwiftUI
 struct MenuApp: App {
     var body: some Scene {
         WindowGroup {
-            MenuView()
+            HomeView()
         }
     }
 }
