@@ -5,9 +5,11 @@
 
 import SwiftUI
 
-struct MenuListRow: View, Hashable {
+struct MenuListRow: View {
     
+    @EnvironmentObject var orderManager :OrderManager
     var item:MenuItem
+    var sfSymbol:String
     
     var body: some View {
         
@@ -25,7 +27,16 @@ struct MenuListRow: View, Hashable {
                 
             Spacer()
                 
-            Text("$" + item.price)
+            Text("$" + String(item.price))
+            
+            if sfSymbol.count > 0 {
+                Button {
+                    orderManager.removeFromOrder(item: item)
+                } label: {
+                    Image(systemName: sfSymbol)
+                        .foregroundStyle(.red)
+                }
+            }
             
         }
         .listRowSeparator(.hidden)
@@ -34,5 +45,5 @@ struct MenuListRow: View, Hashable {
 }
 
 #Preview {
-    MenuListRow(item:MenuItem(name: "Onigiri", price: "1.99", imageName: "onigiri"))
+    MenuListRow(item:MenuItem(name: "Onigiri", price: 1.99, imageName: "onigiri"), sfSymbol: "trash.fill")
 }

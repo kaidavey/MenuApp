@@ -7,8 +7,8 @@ import SwiftUI
 
 struct DetailedView: View {
     
+    @EnvironmentObject var orderManager:OrderManager
     var item:MenuItem
-    var secondaryDataService = SecondaryDataService()
     
     var body: some View {
         
@@ -28,7 +28,7 @@ struct DetailedView: View {
                     
                     Spacer()
                     
-                    Text("$" + item.price)
+                    Text("$" + String(item.price))
                         .font(.title3)
                         .padding()
                 }
@@ -40,8 +40,8 @@ struct DetailedView: View {
                     .cornerRadius(10.0)
                     .padding()
                 
-                Button("Add to Cart") {
-                    //secondaryDataService.addData(item:item)
+                Button("Add to Order") {
+                    orderManager.addToOrder(item: item)
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.extraLarge)
@@ -58,5 +58,5 @@ struct DetailedView: View {
 }
 
 #Preview {
-    DetailedView(item:MenuItem(name: "Onigiri", price: "1.99", imageName: "onigiri"))
+    DetailedView(item:MenuItem(name: "Onigiri", price: 1.99, imageName: "onigiri"))
 }

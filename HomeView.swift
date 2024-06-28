@@ -6,17 +6,22 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @StateObject var orderManager = OrderManager()
+    
     var body: some View {
         TabView {
             MenuView()
+                .environmentObject(orderManager)
                 .tabItem {
                     Image(systemName: "menucard.fill")
                     Text("Menu")
                 }
-            CartView()
+            OrderView()
+                .environmentObject(orderManager)
                 .tabItem {
                     Image(systemName: "cart.fill")
-                    Text("Cart")
+                    Text("Order")
                 }
         }
         .accentColor(.black)
